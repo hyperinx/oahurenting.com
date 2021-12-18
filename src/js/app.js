@@ -50,11 +50,8 @@ const initPersistentAnimationOnScroll = () => {
             video.pause();
             console.log('pause');
         }
-
-
     })
 }
-
 const initTriggeredAnimationOnScroll = () => {
     const scrollOffset = 100;
     const scrollElements = document.querySelectorAll(".js-scroll");
@@ -110,8 +107,6 @@ const getMouseSpeed = (e) => {
         speed = Math.round(distance / dt * 2);
     }
     //console.log(speed);
-
-
     mX = currentmX;
     timestamp = now;
 }
@@ -120,7 +115,6 @@ const initSlider = () => {
     let xDiff;
     let currentX;
     let photoDistance;
-    let requestAnimationFrameId;
     let isDragging = false;
     const slider = document.querySelector('.slider');
     const movableContainerSlider = slider.querySelector('.slider__movable-container');
@@ -155,13 +149,11 @@ const initSlider = () => {
     });
 
     const smoothAnim = () => {
-        apartmentPhotos.forEach((photo, id) => {
+        apartmentPhotos.forEach((photo) => {
             photoDistance = (slider.clientWidth / 2 - ((photo.getBoundingClientRect().left
                 - slider.getBoundingClientRect().left) + photo.clientWidth / 2));
 
             //console.log(`id: ${id}, dist: ${photoDistance}`);
-            //                2 1.5 1 1.5 2
-            // photoDistance 100 50 0 50 100
             photo.style.transform = `rotateY(${photoDistance * -0.04}deg)`;
             photo.style.transform += `scale(${1 + -Math.abs(photoDistance) / 3000})`;
         });
